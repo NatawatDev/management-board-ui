@@ -1,4 +1,5 @@
 import { ReactNode } from 'react' 
+import { RegisterOptions } from "react-hook-form";
 
 export interface BaseButtonPropsType {
   title?: string,
@@ -11,13 +12,12 @@ export interface BaseButtonPropsType {
 }
 
 export interface BaseInputPropsType {
-  value: string,
   placeholder?: string,
   type?: string,
   title?: string,
   name?: string,
   style?: string,
   isDisable? : boolean
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  actions?: (() => void),
+  validate?: RegisterOptions,
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }

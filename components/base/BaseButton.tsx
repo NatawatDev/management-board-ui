@@ -6,17 +6,15 @@ import { BaseButtonPropsType } from '@/app/types/props'
 
 const BaseButton: React.FC<BaseButtonPropsType> = ({ title = 'Default Button', actions, isDisable = false, icon, style, variant }) => {
   return (
-    <>
-      <Button 
-        disabled={isDisable} 
-        onClick={actions} 
-        variant={variant}
-        className={`${style} rounded-[4px]`}
-      >
-        {icon}
-        {title}
-      </Button>
-    </>    
+    <Button 
+      disabled={isDisable} 
+      onClick={actions} 
+      variant={variant}
+      className={`${style} rounded-[4px]`}
+    >
+      {icon}
+      {title}
+    </Button> 
   )
 
 
