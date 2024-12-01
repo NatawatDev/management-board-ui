@@ -15,6 +15,7 @@ interface IUserData {
 }
 
 const AuthUserCard = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const formMethods = useForm<IUserData>()
   const [authFlow, setAuthFlow] = useState<'sign in' | 'sign up' | 'forget password'>('sign in')
 
@@ -25,12 +26,18 @@ const AuthUserCard = () => {
 
   const handleSubmit = async (data: IUserData) => {
     try {
+      setIsLoading(true)
       const result = await signInUser({ email: data.email, password: data.password })
+      if (result) {
+        sessionStorage.setItem('accessToken', result.data.data.token)
+      }
       console.log(result)
-    } catch (error) {
-      // alert(error.response.data.message)
+      setIsLoading(false)
+    } catch (error) {      
+      alert(error)
+      setIsLoading(false)
     }
-    
+
     console.log('Form Submitted:', data)
   }
 
@@ -45,12 +52,13 @@ const AuthUserCard = () => {
             <CardTitle>{isSignIn ? 'Sign In' : 'Sign Up'}</CardTitle>
           </CardHeader>
           <CardContent>
-            {isSignIn && <SignInItem />}
-            {isSignUp && <SignUpItem />}
+            {isSignIn && <SignInItem isDisable={isLoading}/>}
+            {isSignUp && <SignUpItem isDisable={isLoading}/>}
           </CardContent>
           <CardFooter className="flex flex-col gap-[40px]">
             <BaseButton
               title={isSignIn ? 'Sign In' : 'Sign Up'}
+              isDisable={isLoading}
               actions={formMethods.handleSubmit(handleSubmit)}
               style="bg-[#3758F9] text-white w-full hover:bg-[#3758F9]/90 mt-[20px]"
             />
