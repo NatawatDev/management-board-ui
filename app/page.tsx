@@ -1,9 +1,16 @@
-import { Button } from "@/components/ui/button"
+'use client'
 
-export default function Home() {
+import React from 'react'
+import AuthUserCard from '@/components/AuthUserCard'
+
+const page = () => {
   return (
-    <div>
-      <Button>Click me</Button>
+    <div className='flex h-screen'>
+      <div className='m-auto'>
+        <AuthUserCard />
+      </div>
     </div>
   )
 }
+
+export default page
