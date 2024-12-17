@@ -9,6 +9,8 @@ import SignUpItem from "./auth/SignUpItem"
 import SignInItem from "./auth/SignInItem"
 
 import { signInUser } from '@/app/api-repo/user'
+import { useAlert } from '@/app/context/AlertProvider';
+import AlertError from "./dialog/AlertDialog"
 interface IUserData {
   email: string
   password: string
@@ -34,13 +36,14 @@ const AuthUserCard = () => {
       console.log(result)
       setIsLoading(false)
     } catch (error) {      
-      alert(error)
+      showAlert('Error', 'error')
       setIsLoading(false)
     }
 
     console.log('Form Submitted:', data)
   }
 
+  const { showAlert } = useAlert()
   const isSignIn = authFlow === 'sign in'
   const isSignUp = authFlow === 'sign up'
 

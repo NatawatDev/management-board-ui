@@ -13,3 +13,7 @@ export const requirePassword = {
     message: 'Password must be at least 6 characters long',
   },
 };
+
+export const requireFirstname = {
+  
+}

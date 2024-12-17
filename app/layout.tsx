@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AlertProvider from "./context/AlertProvider";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AlertProvider>
+          {children}
+        </AlertProvider>
       </body>
     </html>
   );

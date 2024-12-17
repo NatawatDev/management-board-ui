@@ -7,7 +7,6 @@ interface SignInProps {
   isDisable: boolean
 }
 
-
 const SignIn: React.FC<SignInProps> = ({ isDisable }) => (
   <div className="flex flex-col gap-[30px]">
     <BaseInput

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import AuthUserCard from '@/components/AuthUserCard'
+import AlertError from '@/components/dialog/AlertDialog'
 
 const page = () => {
   return (
